@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "0e2e9669-e146-48af-a39a-d8de1052f130",
+		"name": "Energy and Sustainability Scoring API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3213818"
+	},
+	"item": [
+		{
+			"name": "SBX / Dev",
+			"item": [
+				{
+					"name": "Get Sites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://se-exchange-uat-sandbox.apigee.net/openesx/v1/sites",
+							"protocol": "https",
+							"host": [
+								"se-exchange-uat-sandbox",
+								"apigee",
+								"net"
+							],
+							"path": [
+								"openesx",
+								"v1",
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Certification Provider flag on a Site",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"leedId\": \"232342342342342342343\",\n  \"leedName\": \"leedname4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://se-exchange-uat-sandbox.apigee.net/openesx/v1/sites/{site-id}/certification-providers",
+							"protocol": "https",
+							"host": [
+								"se-exchange-uat-sandbox",
+								"apigee",
+								"net"
+							],
+							"path": [
+								"openesx",
+								"v1",
+								"sites",
+								"{site-id}",
+								"certification-providers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Meters in a Site",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://se-exchange-uat-sandbox.apigee.net/openesx/v1/sites/{site-id}/meters",
+							"protocol": "https",
+							"host": [
+								"se-exchange-uat-sandbox",
+								"apigee",
+								"net"
+							],
+							"path": [
+								"openesx",
+								"v1",
+								"sites",
+								"{site-id}",
+								"meters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Timeseries for a Site",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://se-exchange-uat-sandbox.apigee.net/openesx/v1/sites/{site-id}/timeseries?updatedAt[gte]=2022-02-01T00:00:00Z&updatedAt[lt]=2022-06-01T00:00:00Z",
+							"protocol": "https",
+							"host": [
+								"se-exchange-uat-sandbox",
+								"apigee",
+								"net"
+							],
+							"path": [
+								"openesx",
+								"v1",
+								"sites",
+								"{site-id}",
+								"timeseries"
+							],
+							"query": [
+								{
+									"key": "updatedAt[gte]",
+									"value": "2022-02-01T00:00:00Z"
+								},
+								{
+									"key": "updatedAt[lt]",
+									"value": "2022-06-01T00:00:00Z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Certification Scores for a Site",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"category\": \"energy2\",\n        \"type\": \"daily1\",\n        \"date\": \"2022-06-07\",\n        \"score\": 94.99\n    },\n    {\n        \"category\": \"energy\",\n        \"type\": \"monthly\",\n        \"date\": \"2022-06-01\",\n        \"score\": 94.99\n    },\n    {\n        \"category\": \"energy\",\n        \"type\": \"monthly\",\n        \"date\": \"2022-05-01\",\n        \"score\": 94.99\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://se-exchange-uat-sandbox.apigee.net/openesx/v1/sites/{site-id}/certification-scores",
+							"protocol": "https",
+							"host": [
+								"se-exchange-uat-sandbox",
+								"apigee",
+								"net"
+							],
+							"path": [
+								"openesx",
+								"v1",
+								"sites",
+								"{site-id}",
+								"certification-scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Certification Scores for a site",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://se-exchange-uat-sandbox.apigee.net/openesx/v1/sites/{site-id}/certification-scores",
+							"protocol": "https",
+							"host": [
+								"se-exchange-uat-sandbox",
+								"apigee",
+								"net"
+							],
+							"path": [
+								"openesx",
+								"v1",
+								"sites",
+								"{site-id}",
+								"certification-scores"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "scope",
+						"value": "read:site write:energy-score read:energy-performance read:energy-score offline_access",
+						"type": "string"
+					},
+					{
+						"key": "accessTokenUrl",
+						"value": "https://se-exchange-uat-sandbox.apigee.net/openesx/v1/oauth/token",
+						"type": "string"
+					},
+					{
+						"key": "authUrl",
+						"value": "https://se-exchange-uat-sandbox.apigee.net/openesx/v1/oauth/authorize",
+						"type": "string"
+					},
+					{
+						"key": "tokenType",
+						"value": "",
+						"type": "string"
+					},
+					{
+						"key": "accessToken",
+						"value": "wVfKho9cvpHc3Unfbvlm6EeWKgqK",
+						"type": "string"
+					},
+					{
+						"key": "tokenName",
+						"value": "openesx-sandbox",
+						"type": "string"
+					},
+					{
+						"key": "challengeAlgorithm",
+						"value": "S256",
+						"type": "string"
+					},
+					{
+						"key": "useBrowser",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "grant_type",
+						"value": "authorization_code",
+						"type": "string"
+					},
+					{
+						"key": "clientSecret",
+						"value": "***",
+						"type": "string"
+					},
+					{
+						"key": "clientId",
+						"value": "***",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					},
+					{
+						"key": "client_authentication",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
